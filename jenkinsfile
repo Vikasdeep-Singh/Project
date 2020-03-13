@@ -10,10 +10,10 @@ pipeline {
          }
       }
       
-      stage('To check number of nodes in cluster') {
+      stage('To check docker image') {
          steps {
             sh '''
-            kubectl get nodes
+            ls dockerfile
             '''
          }
       }
@@ -21,7 +21,7 @@ pipeline {
       stage('Upload new docker image to container registry repo') {
          steps {
             sh '''
-            ls -lrt
+            docker tag mywebapp gcr.io/sigma-nimbus-268315/mywebapp
             '''
          }
       }
