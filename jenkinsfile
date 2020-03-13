@@ -13,7 +13,7 @@ pipeline {
       stage('To check docker image') {
          steps {
             sh '''
-            ls dockerfile
+            ls Dockerfile 
             '''
          }
       }
