@@ -9,8 +9,7 @@ pipeline {
 	    '''
          }
       }
-  }
- stages {
+      
       stage('To check number of nodes in cluster') {
          steps {
             sh '''
@@ -18,8 +17,7 @@ pipeline {
             '''
          }
       }
-  }
-  stages {
+      
       stage('Upload new docker image to container registry repo') {
          steps {
             sh '''
@@ -28,7 +26,6 @@ pipeline {
          }
       }
   }
-
 }
 
 
