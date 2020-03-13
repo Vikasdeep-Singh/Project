@@ -1,6 +1,13 @@
 pipeline {
    agent any
 
+   environment {
+		PROJECT = "REPLACE_WITH_YOUR_PROJECT_ID"
+		APP_NAME = "mywebapp"
+		CLUSTER = "cluster-1"
+		CLUSTER_ZONE = "us-cental1-c"
+		IMAGE_TAG = "gcr.io/sigma-nimbus-268315/${APP_NAME}"
+	}
    stages {
       stage('Check Version of Gcloud') {
          steps {
@@ -16,16 +23,13 @@ pipeline {
             ls Dockerfile 
             '''
          }
-      }
       
-      stage('Upload new docker image to container registry repo') {
-         steps {
-            sh '''
-            docker tag mywebapp gcr.io/sigma-nimbus-268315/mywebapp
-            '''
-         }
-      }
-  }
+       steps {
+        container('kubectl') {
+          // Create namespace if it doesn't exist
+          sh("kubectl get nodes")
+	}
+     }
+    } 
+ }
 }
-
-
