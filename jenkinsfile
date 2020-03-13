@@ -23,9 +23,11 @@ pipeline {
             ls Dockerfile 
             '''
          }
-      
-       steps {
-        container('kubectl') {
+       }
+
+       stage('To check number of nodes') {
+        steps {
+          container('kubectl') {
           // Create namespace if it doesn't exist
           sh("kubectl get nodes")
 	}
