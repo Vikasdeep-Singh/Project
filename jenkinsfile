@@ -2,12 +2,33 @@ pipeline {
    agent any
 
    stages {
-      stage('start') {
+      stage('Check Version of Gcloud') {
          steps {
             sh '''
 	    gcloud --version
 	    '''
          }
       }
-   }
+  }
+ stages {
+      stage('To check number of nodes in cluster') {
+         steps {
+            sh '''
+            kubectl get nodes
+            '''
+         }
+      }
+  }
+  stages {
+      stage('Upload new docker image to container registry repo') {
+         steps {
+            sh '''
+            ls -lrt
+            '''
+         }
+      }
+  }
+
 }
+
+
