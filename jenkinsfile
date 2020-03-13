@@ -29,7 +29,7 @@ pipeline {
         steps {
           container('kubectl') {
           // Create namespace if it doesn't exist
-          sh("kubectl get nodes")
+          sh("kubectl version")
 	}
      }
     } 
