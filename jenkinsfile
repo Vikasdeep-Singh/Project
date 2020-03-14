@@ -1,10 +1,15 @@
 pipeline {
-     agent{
-	kubernetes {
-	  label 'mywebapp'
-     }
-    }
-
+    agent {
+        kubernetes {
+			stage('Deploy Production') {
+									steps{
+									container('kubectl') {
+									sh '''
+									kubectl get pods
+									'''
+										}
+									}
+								}
 
    environment {
 		PROJECT = "REPLACE_WITH_YOUR_PROJECT_ID"
@@ -14,24 +19,7 @@ pipeline {
 		IMAGE_TAG = "gcr.io/sigma-nimbus-268315/${APP_NAME}"
 	}
 
-	
-	
-   stages {
-      stage('Check Version of Gcloud') {
-         steps {
-            sh '''
-	    gcloud --version
-	    '''
-         }
-      }
-      
-      stage('To check docker image') {
-         steps {
-            sh '''
-            ls Dockerfile 
-            '''
-         }
-       }
-
+   }  
  }
 }
+
