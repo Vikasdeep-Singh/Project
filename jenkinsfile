@@ -2,9 +2,6 @@ pipeline {
      agent{
 	kubernetes {
 	  label 'mywebapp'
-          container('kubectl')
-          // Create namespace if it doesn't exist
-          sh("kubectl get pods")
      }
     }
 
@@ -16,6 +13,9 @@ pipeline {
 		CLUSTER_ZONE = "us-cental1-c"
 		IMAGE_TAG = "gcr.io/sigma-nimbus-268315/${APP_NAME}"
 	}
+
+	
+	
    stages {
       stage('Check Version of Gcloud') {
          steps {
