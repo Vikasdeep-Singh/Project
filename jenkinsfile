@@ -1,6 +1,7 @@
 pipeline {
     agent {
         kubernetes {
+		stages{
 			stage('Deploy Production') {
 									steps{
 									container('kubectl') {
@@ -10,16 +11,8 @@ pipeline {
 										}
 									}
 								}
-
-   environment {
-		PROJECT = "REPLACE_WITH_YOUR_PROJECT_ID"
-		APP_NAME = "mywebapp"
-		CLUSTER = "cluster-1"
-		CLUSTER_ZONE = "us-cental1-c"
-		IMAGE_TAG = "gcr.io/sigma-nimbus-268315/${APP_NAME}"
-	}
-
-   }  
- }
+					}  
+			}
+			}
 }
 
