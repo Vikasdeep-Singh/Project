@@ -1,16 +1,15 @@
 pipeline {
-    agent any{
-		stages{
-			stage('Deploy Production') {
-									steps{
-									container('kubectl') {
+   agent any
+
+   stages {
+      stage('Hello') {
+         steps {
+           container('kubectl') {
 									sh '''
 									kubectl get pods
 									'''
-										}
 									}
-								}
-					}  
-			}
+         }
+      }
+   }
 }
-
