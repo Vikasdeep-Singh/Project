@@ -4,7 +4,6 @@ pipeline {
    stages {
       stage('Hello') {
          steps {
-           container('gcloud') {
 									sh '''
 									gcloud --version
 									'''
@@ -12,4 +11,3 @@ pipeline {
          }
       }
    }
-}
