@@ -1,12 +1,12 @@
 pipeline {
-   agent kubernetes
+   agent any
 
    stages {
       stage('Hello') {
          steps {
-           container('kubectl') {
+           container('gcloud') {
 									sh '''
-									kubectl get pods
+									gcloud --version
 									'''
 									}
          }
